@@ -32,5 +32,4 @@ setup(
     version="0.0.1",
     packages=find_packages(), # finds wherever we have __init__.py
     install_requires=get_requirements()
-
 )

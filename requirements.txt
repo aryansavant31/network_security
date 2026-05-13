@@ -3,5 +3,8 @@ pandas
 numpy
 pymongo[srv]
 certifi
-
+joblib
+python-box
+types-PyYAML
+PyYAML
 # -e .

@@ -7,4 +7,5 @@ joblib
 python-box
 types-PyYAML
 PyYAML
+scikit-learn
 # -e .

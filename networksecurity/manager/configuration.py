@@ -2,11 +2,17 @@ import os
 from networksecurity.constants import (general, data_ingestion)
 from networksecurity.utils.common import read_yaml, create_directories
 from networksecurity.entity.config_entity import DataIngestionConfig, DataTransformationConfig
+from datetime import datetime
 
 class ConfigurationManager:
-    def __init__(self, config_path=general.CONFIG_FILE_PATH):
+    def __init__(self, 
+                 config_path=general.CONFIG_FILE_PATH,
+                 timestamp=datetime.now()
+                 ):
         self.config = read_yaml(path_to_yaml=config_path)
-        create_directories(path_to_dir=[general.ARTIFACT_DIR])
+        timestamp = timestamp.strftime("%m_%d_%Y_%H_%M_%S")
+        self.artifact_root = os.path.join(general.ARTIFACT_DIR_NAME, timestamp)
+        create_directories(paths_to_dir=[self.artifact_root])
 
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         """
@@ -15,8 +21,8 @@ class ConfigurationManager:
         config = self.config.data_ingestion
 
         # make paths
-        data_ingestion_root = os.path.join(general.ARTIFACT_DIR, data_ingestion.ROOT_DIR)
-        feature_store_file_path = os.path.join(data_ingestion_root, data_ingestion.FEATURE_STORE_DIR)
+        data_ingestion_root = os.path.join(self.artifact_root, data_ingestion.ROOT_DIR)
+        feature_store_file_path = os.path.join(data_ingestion_root, data_ingestion.FEATURE_STORE_DIR, data_ingestion.RAW_DATA_FILE_NAME)
         train_file_path = os.path.join(data_ingestion_root, data_ingestion.INGESTED_DIR, data_ingestion.TRAIN_FILE_NAME)
         test_file_path = os.path.join(data_ingestion_root, data_ingestion.INGESTED_DIR, data_ingestion.TEST_FILE_NAME)
 

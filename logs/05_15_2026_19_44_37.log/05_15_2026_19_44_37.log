@@ -1,0 +1,5 @@
+[ 2026-05-15 19:44:39,272 ] 21 network_data_security - INFO -yaml file: config\config.yaml loaded successfully
+[ 2026-05-15 19:44:39,273 ] 33 network_data_security - INFO -Creating directory at artifacts\05_15_2026_19_44_39
+[ 2026-05-15 19:44:39,273 ] 14 network_data_security - INFO -Starting data ingestion
+[ 2026-05-15 19:44:39,837 ] 39 network_data_security - INFO -Imported collection as dataframe from mongodb
+[ 2026-05-15 19:44:39,842 ] 49 network_data_security - INFO -Export raw data into artifacts\05_15_2026_19_44_39\data_ingestion\feature_store

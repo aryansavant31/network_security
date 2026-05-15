@@ -1,4 +1,4 @@
 from pathlib import Path
 
 CONFIG_FILE_PATH = Path("config/config.yaml")
-ARTIFACT_DIR = "artifacts"
+ARTIFACT_DIR_NAME = "artifacts"

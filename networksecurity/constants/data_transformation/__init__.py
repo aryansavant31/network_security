@@ -1,1 +1,7 @@
-ROOT_DIR = "data_transformation"
+ROOT_DIR = "3_data_transformation"
+TRANSFORMED_TRAIN_FILE_NAME = "train.npy"
+TRANSFORMED_TEST_FILE_NAME = "test.npy"
+TRANSFORMED_DATA_DIR = "transformed_data"
+TRANSFORMATION_OBJECT_DIR = "transformation_object"
+PREPROCESSING_OBJECT_FILE_NAME = "preprocessing_config.pkl"
+TARGET_COLUMN = "Result"

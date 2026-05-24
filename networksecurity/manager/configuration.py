@@ -1,7 +1,8 @@
 import os
-from networksecurity.constants import (general, data_ingestion)
+from networksecurity.constants import (general, data_ingestion, data_validation, data_transformation)
 from networksecurity.utils.common import read_yaml, create_directories
-from networksecurity.entity.config_entity import DataIngestionConfig, DataTransformationConfig
+from networksecurity.entity.config_entity import (DataIngestionConfig, DataValidationConfig, 
+                                                  DataTransformationConfig)
 from datetime import datetime
 
 class ConfigurationManager:
@@ -37,8 +38,47 @@ class ConfigurationManager:
         )
         return data_ingestion_config
     
+    def get_data_validation_config(self) -> DataValidationConfig:
+        """
+        Assign data validation config attributes
+        """
+        # make paths
+        data_validation_root = os.path.join(self.artifact_root, data_validation.ROOT_DIR)
+        valid_status_file_path = os.path.join(data_validation_root, data_validation.VALID_STATUS_DIR, data_validation.VALID_STATUS_FILE_NAME)
+        drift_report_file_path = os.path.join(data_validation_root, data_validation.DRIFT_REPORT_DIR, data_validation.DRIFT_REPORT_FILE_NAME)
+
+        data_validation_config = DataValidationConfig(
+            root_dir=data_validation_root,
+            valid_status_file_path = valid_status_file_path,
+            drift_report_file_path = drift_report_file_path
+        )
+        return data_validation_config
+    
     def get_data_transformation_config(self) -> DataTransformationConfig:
         """
         Assign the DataTransformationConfig attribute
         """
-        pass
+        config = self.config.data_transformation
+
+        # make paths
+        data_transformation_root = os.path.join(self.artifact_root, data_transformation.ROOT_DIR)
+        transformed_train_file_path = os.path.join(data_transformation_root, 
+                                                   data_transformation.TRANSFORMED_DATA_DIR,
+                                                   data_transformation.TRANSFORMED_TRAIN_FILE_NAME)
+        transformed_test_file_path = os.path.join(data_transformation_root, 
+                                                   data_transformation.TRANSFORMED_DATA_DIR,
+                                                   data_transformation.TRANSFORMED_TEST_FILE_NAME)
+        transformation_object_file_path = os.path.join(data_transformation_root, 
+                                                   data_transformation.TRANSFORMATION_OBJECT_DIR,
+                                                   data_transformation.PREPROCESSING_OBJECT_FILE_NAME)
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir = data_transformation_root,
+            transformed_train_file_path = transformed_train_file_path,
+            transformed_test_file_path = transformed_test_file_path,
+            transformation_object_file_path = transformation_object_file_path,
+            imputer_params = config.imputer_params,
+            target_col = data_transformation.TARGET_COLUMN
+        )
+
+        return data_transformation_config

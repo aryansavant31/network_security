@@ -32,7 +32,7 @@ class DataIngestionComponent:
 
             # remove the id column from collection if exist
             if "_id" in df.columns.to_list():
-                df.drop(columns=["_id"], axis=1)
+                df.drop(columns=["_id"], axis=1, inplace=True)
 
             # replace nan with np.nan
             df.replace(to_replace="nan", value=np.nan, inplace=True)

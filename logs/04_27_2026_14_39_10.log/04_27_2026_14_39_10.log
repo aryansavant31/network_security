@@ -1,3 +1,0 @@
-[ 2026-04-27 14:39:10,678 ] 31 network_data_security - INFO -csv file converted to list of jsons
-[ 2026-04-27 14:39:20,027 ] 45 network_data_security - INFO -Network data uploaded to Mongodb server
-[ 2026-04-27 14:39:20,027 ] 46 network_data_security - INFO -Number of records are: 11055

@@ -1,4 +1,4 @@
-from networksecurity.pipelines.training_pipeline import TrainingPipeline
+from src.phishingdetection.pipelines.training_pipeline import TrainingPipeline
 
 if __name__ == "__main__":
     training_pipeline = TrainingPipeline()

@@ -3,8 +3,8 @@ import os
 import certifi
 import pandas as pd
 import json
-from networksecurity.exceptions.custom_exception import NetworkSecurityException
-from networksecurity.logging.logger import logger
+from src.phishingdetection.exceptions.custom_exception import NetworkSecurityException
+from src.phishingdetection.logging.logger import logger
 from typing import List
 import pymongo
 from pathlib import Path

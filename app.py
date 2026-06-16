@@ -2,11 +2,11 @@ import os
 import sys
 import pymongo
 import pandas as pd
-from networksecurity.exceptions.custom_exception import NetworkSecurityException
-from networksecurity.logging.logger import logger
-from networksecurity.pipelines.training_pipeline import TrainingPipeline
-from networksecurity.pipelines.prediction_pipeline import PredictionPipeline
-from networksecurity.utils.common import load_object
+from src.phishingdetection.exceptions.custom_exception import NetworkSecurityException
+from src.phishingdetection.logging.logger import logger
+from src.phishingdetection.pipelines.training_pipeline import TrainingPipeline
+from src.phishingdetection.pipelines.prediction_pipeline import PredictionPipeline
+from src.phishingdetection.utils.common import load_object
 
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, UploadFile, Request, File

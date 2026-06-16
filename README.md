@@ -1,4 +1,4 @@
-# Phishing Detection Project
+# End-to-End Phishing Website Detection Platform
 
 An end-to-end machine learning project for detecting phishing or unsafe network activity from structured URL/network features. The project includes data ingestion from MongoDB, data validation, feature transformation, model selection/training, MLflow/DagsHub experiment tracking, S3 artifact syncing, a FastAPI service for training and batch prediction, and AWS deployment through GitHub Actions, Amazon ECR, and EC2.
 

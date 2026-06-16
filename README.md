@@ -302,6 +302,12 @@ prediction_artifacts/<timestamp>/3_model_prediction/output.csv
 - AWS deployment is handled through the GitHub Actions workflow at `.github/workflows/main.yaml` and is currently under works.
 - The repository includes generated artifacts and logs. For cleaner version control, consider ignoring runtime folders such as `logs/`, `training_artifacts/`, `prediction_artifacts/`, `__pycache__/`, and generated model pickle files.
 
+## Credits
+
+This project was inspired by and worked upon from the teachings and project structure shared by Krish Naik.
+
+GitHub: [https://github.com/krishnaik06](https://github.com/krishnaik06)
+
 ## License
 
 This project is licensed under the terms included in the `LICENSE` file.

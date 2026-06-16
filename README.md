@@ -304,9 +304,7 @@ prediction_artifacts/<timestamp>/3_model_prediction/output.csv
 
 ## Credits
 
-This project was inspired by and worked upon from the teachings and project structure shared by Krish Naik.
-
-GitHub: [https://github.com/krishnaik06](https://github.com/krishnaik06)
+This project builds upon concepts and implementation patterns taught in Krish Naik's MLOps course. I independently refactored the codebase and project structure to improve maintainability and readability, and implemented additional functionality, including the prediction pipeline.
 
 ## License
 

@@ -34,6 +34,7 @@ jobs:
                 sudo apt-get install -y jq unzip
 
           - name: Configure AWS credentials
+            id: configure-ecr
             uses: aws-actions/configure-aws-credentials@v1
             with:
               aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -44,3 +45,15 @@ jobs:
             id: login-ecr
             uses: aws-actions/amazon-ecr-login@v1
 
+          - name: Build, tag and push docker image to aws ecr
+            id: build-image
+            env:
+              ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+              ECR_REPOSITORY: ${{secrets.ECR_REPOSITORY_NAME }}
+              IMAGE_TAG: latest
+            run:
+              # build docker image first and push it to ecr (elastic container registery).
+              # tHEN from ECR it can be deployed to Elastic compute
+              docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+              docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+              echo "::set-output name-image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"

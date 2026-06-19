@@ -79,9 +79,9 @@ jobs:
             id: login-ecr
             uses: aws-actions/amazon-ecr-login@v1
 
-          - name: Stop and remove  container if running
-            run: |
-              docker ps -q --filter "name=phishingdetection" | grep -q . && docker stop phishingdetection && docker rm -fv phishingdetection
+          # - name: Stop and remove  container if running
+          #  run: |
+          #   docker ps -q --filter "name=phishingdetection" | grep -q . && docker stop phishingdetection && docker rm -fv phishingdetection
 
           - name: Pull latest images from ECR
             run: |

@@ -79,13 +79,13 @@ jobs:
             id: login-ecr
             uses: aws-actions/amazon-ecr-login@v1
 
-          - name: Pull latest images from ECR
-            run: |
-              docker pull ${{secrets.AWS_ECR_LOGIN_URI}}:latest
-
           - name: Stop and remove  container if running
             run: |
               docker ps -q --filter "name=phishingdetection" | grep -q . && docker stop phishingdetection && docker rm -fv phishingdetection
+
+          - name: Pull latest images from ECR
+            run: |
+              docker pull ${{secrets.AWS_ECR_LOGIN_URI}}:latest
 
           - name: Run Docker image in EC2 to serve users
             run: |

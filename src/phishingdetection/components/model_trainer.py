@@ -21,8 +21,6 @@ load_dotenv()
 MLFLOW_URI = os.getenv("MLFLOW_URI_DAGSHUB")
 REPO_OWNER = os.getenv("REPO_OWNER")
 
-dagshub.init(repo_owner=REPO_OWNER, repo_name='network_security', mlflow=True)
-
 class ModelTrainerComponent:
     def __init__(self, 
                  data_transformation_artifact: DataTransformationArtifact, 
@@ -55,6 +53,8 @@ class ModelTrainerComponent:
         
     def track_experiment_with_mlflow(self, metric_report:dict[str, ClassificationMetricArtifact], best_model):
         try:
+            dagshub.init(repo_owner=REPO_OWNER, repo_name='network_security', mlflow=True)
+            
             for model_name, metric in metric_report.items():
 
                 with mlflow.start_run(run_name=model_name + datetime.now().strftime("%m_%d_%Y_%H_%M_%S")):

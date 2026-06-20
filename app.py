@@ -4,8 +4,6 @@ import pymongo
 import pandas as pd
 from src.phishingdetection.exceptions.custom_exception import NetworkSecurityException
 from src.phishingdetection.logging.logger import logger
-from src.phishingdetection.pipelines.training_pipeline import TrainingPipeline
-from src.phishingdetection.pipelines.prediction_pipeline import PredictionPipeline
 from src.phishingdetection.utils.common import load_object
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -46,6 +44,7 @@ async def index():
 @app.get("/train")
 async def train_route():
     try:
+        from src.phishingdetection.pipelines.training_pipeline import TrainingPipeline
         training_pipeline = TrainingPipeline()
         training_pipeline.initiate_training()
         return Response("Wonderful, the training is completed!")
@@ -55,6 +54,7 @@ async def train_route():
 @app.post('/predict')
 async def predict_route(request:Request, file:UploadFile=File(...)): # UplaodFIle will allow to upload files in website
     try:
+        from src.phishingdetection.pipelines.prediction_pipeline import PredictionPipeline
         prediction_pipeline = PredictionPipeline()
         output_data = prediction_pipeline.start_batch_prediction(file.file)
 
